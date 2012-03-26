@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
 import org.bukkit.inventory.ItemStack;
@@ -17,7 +18,7 @@ public class MRRecipes
 {
   protected HashMap<String, ItemStack> itemStacksToRecycle = new HashMap();
   protected HashMap<String, ArrayList<ItemStack>> itemStacksToGivePlayer = new HashMap();
-  protected HashMap<Integer, Short> maxDamages = new HashMap();
+  protected HashMap<Integer, Integer> maxDamages = new HashMap();
 
   MRRecipes()
   {
@@ -33,7 +34,7 @@ public class MRRecipes
   }
 
   public short getMaxDamage(int typeId) {
-    return ((Short)this.maxDamages.get(Integer.valueOf(typeId))).shortValue();
+		return this.maxDamages.get(typeId).shortValue();
   }
 
   public ArrayList<ItemStack> getItemStacksToGivePlayer(int typeId, short damageValue)
@@ -45,50 +46,50 @@ public class MRRecipes
 
   private void populateMaxDurabilities()
   {
-    this.maxDamages.put(Integer.valueOf(259), Short.valueOf(65));
-    this.maxDamages.put(Integer.valueOf(346), Short.valueOf(33));
-    this.maxDamages.put(Integer.valueOf(359), Short.valueOf(239));
-    this.maxDamages.put(Integer.valueOf(283), Short.valueOf(33));
-    this.maxDamages.put(Integer.valueOf(285), Short.valueOf(33));
-    this.maxDamages.put(Integer.valueOf(284), Short.valueOf(33));
-    this.maxDamages.put(Integer.valueOf(286), Short.valueOf(33));
-    this.maxDamages.put(Integer.valueOf(294), Short.valueOf(33));
-    this.maxDamages.put(Integer.valueOf(268), Short.valueOf(60));
-    this.maxDamages.put(Integer.valueOf(270), Short.valueOf(60));
-    this.maxDamages.put(Integer.valueOf(269), Short.valueOf(60));
-    this.maxDamages.put(Integer.valueOf(271), Short.valueOf(60));
-    this.maxDamages.put(Integer.valueOf(290), Short.valueOf(60));
-    this.maxDamages.put(Integer.valueOf(272), Short.valueOf(132));
-    this.maxDamages.put(Integer.valueOf(274), Short.valueOf(132));
-    this.maxDamages.put(Integer.valueOf(273), Short.valueOf(132));
-    this.maxDamages.put(Integer.valueOf(275), Short.valueOf(132));
-    this.maxDamages.put(Integer.valueOf(291), Short.valueOf(132));
-    this.maxDamages.put(Integer.valueOf(267), Short.valueOf(251));
-    this.maxDamages.put(Integer.valueOf(257), Short.valueOf(251));
-    this.maxDamages.put(Integer.valueOf(256), Short.valueOf(251));
-    this.maxDamages.put(Integer.valueOf(258), Short.valueOf(251));
-    this.maxDamages.put(Integer.valueOf(292), Short.valueOf(251));
-    this.maxDamages.put(Integer.valueOf(276), Short.valueOf(1562));
-    this.maxDamages.put(Integer.valueOf(278), Short.valueOf(1562));
-    this.maxDamages.put(Integer.valueOf(277), Short.valueOf(1562));
-    this.maxDamages.put(Integer.valueOf(279), Short.valueOf(1562));
-    this.maxDamages.put(Integer.valueOf(293), Short.valueOf(1562));
-    this.maxDamages.put(Integer.valueOf(298), Short.valueOf(34));
-    this.maxDamages.put(Integer.valueOf(299), Short.valueOf(49));
-    this.maxDamages.put(Integer.valueOf(300), Short.valueOf(46));
-    this.maxDamages.put(Integer.valueOf(301), Short.valueOf(40));
-    this.maxDamages.put(Integer.valueOf(314), Short.valueOf(68));
-    this.maxDamages.put(Integer.valueOf(315), Short.valueOf(96));
-    this.maxDamages.put(Integer.valueOf(316), Short.valueOf(92));
-    this.maxDamages.put(Integer.valueOf(317), Short.valueOf(80));
-    this.maxDamages.put(Integer.valueOf(306), Short.valueOf(136));
-    this.maxDamages.put(Integer.valueOf(307), Short.valueOf(192));
-    this.maxDamages.put(Integer.valueOf(308), Short.valueOf(184));
-    this.maxDamages.put(Integer.valueOf(309), Short.valueOf(160));
-    this.maxDamages.put(Integer.valueOf(310), Short.valueOf(272));
-    this.maxDamages.put(Integer.valueOf(311), Short.valueOf(384));
-    this.maxDamages.put(Integer.valueOf(312), Short.valueOf(368));
-    this.maxDamages.put(Integer.valueOf(313), Short.valueOf(320));
+    this.maxDamages.put(259,65);
+    this.maxDamages.put(346,33);
+    this.maxDamages.put(359,239);
+    this.maxDamages.put(283,33);
+    this.maxDamages.put(285,33);
+    this.maxDamages.put(284,33);
+    this.maxDamages.put(286,33);
+    this.maxDamages.put(294,33);
+    this.maxDamages.put(268,60);
+    this.maxDamages.put(270,60);
+    this.maxDamages.put(269,60);
+    this.maxDamages.put(271,60);
+    this.maxDamages.put(290,60);
+    this.maxDamages.put(272,132);
+    this.maxDamages.put(274,132);
+    this.maxDamages.put(273,132);
+    this.maxDamages.put(275,132);
+    this.maxDamages.put(291,132);
+    this.maxDamages.put(267,251);
+    this.maxDamages.put(257,251);
+    this.maxDamages.put(256,251);
+    this.maxDamages.put(258,251);
+    this.maxDamages.put(292,251);
+    this.maxDamages.put(276,1562);
+    this.maxDamages.put(278,1562);
+    this.maxDamages.put(277,1562);
+    this.maxDamages.put(279,1562);
+    this.maxDamages.put(293,1562);
+    this.maxDamages.put(298,34);
+    this.maxDamages.put(299,49);
+    this.maxDamages.put(300,46);
+    this.maxDamages.put(301,40);
+    this.maxDamages.put(314,68);
+    this.maxDamages.put(315,96);
+    this.maxDamages.put(316,92);
+    this.maxDamages.put(317,80);
+    this.maxDamages.put(306,136);
+    this.maxDamages.put(307,192);
+    this.maxDamages.put(308,184);
+    this.maxDamages.put(309,160);
+    this.maxDamages.put(310,272);
+    this.maxDamages.put(311,384);
+    this.maxDamages.put(312,368);
+    this.maxDamages.put(313,320);
   }
 
   private void populateItemStacks()
@@ -103,14 +104,13 @@ public class MRRecipes
       String line;
       while ((line = br.readLine()) != null)
       {
-        String line;
         String[] wholeLine = ep.split(line);
         String[] itemInfo = xp.split(wholeLine[0]);
         String[] itemTypeDamage = cp.split(itemInfo[1]);
         String key;
         if (itemTypeDamage.length > 1) {
           ItemStack addAsRecycleInput = new ItemStack(Integer.parseInt(itemTypeDamage[0]), Integer.parseInt(itemInfo[0]), Short.parseShort(itemTypeDamage[1]));
-          String key = itemTypeDamage[0] + ":" + itemTypeDamage[1];
+          key = itemTypeDamage[0] + ":" + itemTypeDamage[1];
           this.itemStacksToRecycle.put(key, addAsRecycleInput);
         }
         else
@@ -125,7 +125,6 @@ public class MRRecipes
         for (int i = 0; i < recipeInfo.length; i++) {
           String[] recipeIndividualInfo = xp.split(recipeInfo[i]);
           String[] recipeTypeDamage = cp.split(recipeIndividualInfo[1]);
-          ItemStack currentAddAsRecycleOutput;
           ItemStack currentAddAsRecycleOutput;
           if (recipeTypeDamage.length > 1) {
             currentAddAsRecycleOutput = new ItemStack(Integer.parseInt(recipeTypeDamage[0]), Integer.parseInt(recipeIndividualInfo[0]), Short.parseShort(recipeTypeDamage[1]));
